@@ -1,0 +1,25 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# gitignore for react app
+#
+
+# dependencies
+React_Client/node_modules/
+React_Client/.pnp
+React_Client/.pnp.js
+
+# testing
+React_Client//coverage
+
+# production
+React_Client/build
+
+# misc
+React_Client/.DS_Store
+React_Client/.env.local
+React_Client/.env.development.local
+React_Client/.env.test.local
+React_Client/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
