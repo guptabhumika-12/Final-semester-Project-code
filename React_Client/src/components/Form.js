@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "../style/form.css"
 import Loader from './Loader';
-
-import { BASE_PATH } from '../testconfig';
-const Form = ({ prediction, setPrediction, loader, setLoader }) => {
+const Form = ({ prediction,close, setPrediction, loader, setLoader }) => {
     const [file, setFile] = useState(null);
 
     const uploadFile = (e) => {
         setLoader(true)
+        close(false)
         e.preventDefault();
         let filer = document.getElementById('file').files[0];
         if (!filer) {
@@ -22,7 +21,7 @@ const Form = ({ prediction, setPrediction, loader, setLoader }) => {
         const formData = new FormData();
 
         formData.append("file", file);
-        axios.post((" http://1e4e-34-147-59-114.ngrok-free.app/" +'uploader'), formData, {
+        axios.post(("http://8d50-35-237-211-15.ngrok-free.app/" +'uploader'), formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -34,6 +33,7 @@ const Form = ({ prediction, setPrediction, loader, setLoader }) => {
                 p = res.data;
                 setPrediction(p);
                 setLoader(false)
+                close(true)
             })
             .catch(err => console.log(err));
 
@@ -53,7 +53,7 @@ const Form = ({ prediction, setPrediction, loader, setLoader }) => {
             "width": "50%",
             "height": "50%",
             "borderRadius": "10px",
-            "backgroundColor": "#cceeff",
+            "backgroundColor": "rgba(204, 238, 255, 0.8)",
             "padding": "20px",
             "boxShadow": "0px 0px 10px black"
 
@@ -111,7 +111,8 @@ const Form = ({ prediction, setPrediction, loader, setLoader }) => {
                             "alignItems": "center",
                             "width": "100%",
                             "borderRadius": "10px",
-                            "backgroundColor": "#cceeff",
+                         
+                           
                             "padding": "20px",
                         }
 
